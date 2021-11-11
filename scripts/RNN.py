@@ -8,7 +8,7 @@ import pandas as pd
 CONFIG = {
     'DATA_FRAME_PATH': './df.csv',
     'DATA_FRAME_SPLIT': 3000000,
-    'CONSIDER': ['Open', 'Close', 'High', 'Low'],
+    'CONSIDER': ['Open', 'Weighted_Price', 'Close', 'High', 'Low'],
     'DATE_NAME': 'Timestamp',
     'TRAIN_SPLIT': 300000,
     'STEP': 60,
@@ -42,7 +42,7 @@ class RNN:
         pass
 
     def STANDARDIZATION(self):
-        # дата фрейм по интересуюшим нас влияющим параметрам
+        # дата фрейм по интересуюшим нас параметрам
         self.features = self.df[self.CONSIDER]
         self.features.index = self.df[self.DATE_NAME]
         self.features.head()
@@ -84,7 +84,8 @@ class RNN:
                                                       future_target, STEP,
                                                       single_step=True)
         print ('Временной интервал: {}'.format(x_train_single[0].shape))
-   def TRAIN(self):
+
+    def TRAIN(self):
         pass
 
     def SAVE_MODEL(self):
