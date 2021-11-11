@@ -5,12 +5,12 @@ import time
 import os
 
 NAME = 'df'
+SYMBOL = 'BTC_USD' # пара
 NOW = round(datetime.datetime.now().timestamp()) # конечное время (текушее время в секундах)
-SIZE = 30 # размер датасета
-QUERY_SIZE = 10 # сколько заберать за раз, API  имеет ограничение в 3000
+SIZE = 1000 # размер датасета
+QUERY_SIZE = 100 # сколько заберать за раз, API  имеет ограничение в 3000
 TIMEOUT = 1 # задержка между запросами (секунды)
 RESOLUTION = 30 # 1, 5, 15, 30, 45, 60, 120, 180, 240 интервал между значениями (свеча) (минуты)
-SYMBOL = 'BTC_USD' # пара
 
 DATA = []
 
@@ -50,7 +50,8 @@ with open(f'{NAME}.csv', 'w') as csvfile:
     writer.writeheader()
     writer.writerows(DATA)
 
+os.system('clear')
 print('Датасет собран.')
 print(f'Имя: {NAME}.csv')
 print(f'Количество строк: {len(DATA) - 1}')
-print(f'Время выполнения: {round(NOW - datetime.datetime.now().timestamp())} секунд.')
+print(f'Время выполнения: {round(datetime.datetime.now().timestamp()- NOW)} секунд.')
